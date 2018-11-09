@@ -144,7 +144,7 @@ int ytcpsocket_bytes_available(int socketfd) {
 
 int ytcpsocket_send(int socketfd, const char *data, int offset, int len){
     int byteswrite = 0;
-    sprintf("Writing %d bytes starting from %d", len, offset);
+    printf("Writing %d bytes starting from %d", len, offset);
     while (len - byteswrite > 0) {
         int writelen = (int)write(socketfd, data + byteswrite + offset, len - byteswrite);
         if (writelen < 0) {
