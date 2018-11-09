@@ -142,10 +142,10 @@ int ytcpsocket_bytes_available(int socketfd) {
     return count;
 }
 
-int ytcpsocket_send(int socketfd, const char *data, int len){
+int ytcpsocket_send(int socketfd, const char *data, int offset, int len){
     int byteswrite = 0;
     while (len - byteswrite > 0) {
-        int writelen = (int)write(socketfd, data + byteswrite, len - byteswrite);
+        int writelen = (int)write(socketfd, data + byteswrite + offset, len - byteswrite);
         if (writelen < 0) {
             return -1;
         }
