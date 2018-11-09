@@ -112,7 +112,7 @@ open class TCPClient: Socket {
     open func send(data: Data, offset: Int = 0, length: Int = -1) -> Result {
         let size = length == -1 ? data.count : length
         var buff = [Byte](repeating: 0x0,count: size)
-        (data as NSData).getBytes(&buff, range: NSMakeRange(offset, length))
+        (data as NSData).getBytes(&buff, range: NSMakeRange(offset, size))
         
         return send(data: buff)
     }
